@@ -1,10 +1,11 @@
-# TEXT COUNT ANALYSIS
-""" Calculates the amount of words, chars, sentences, and paragraphs in a .pdf/.docx/.txt """
+# TEXT COUNT ANALYSIS PROGRAM
 
 import os
 import re
 import pymupdf
 import docx
+
+
 
 def user_guide():
     current_working_directory = os.getcwd()
@@ -16,6 +17,7 @@ def user_guide():
     
 
 
+""" Detects the type of file extension the user has entered in the prompt. """
 def detect_file_path(file_path):
     ext = os.path.splitext(file_path)[1]
 
@@ -59,7 +61,7 @@ def detect_file_path(file_path):
         
 
 
-
+""" This function is responsible for the text extraction; each components has their own set of patterns (via regex) for how they do the extraction. """
 def counting_algorithm(text):
     get_word_count = len(re.findall(r"\w+", text))
     get_character_count = len(re.findall(r"\S", text))
